@@ -615,6 +615,7 @@ ENV YARN_VERSION ${YARN_VERSION}
 
 RUN if [ ${INSTALL_YARN} = true ]; then \
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
+	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --import && \
     if [ ${YARN_VERSION} = "latest" ]; then \
         curl -o- -L https://yarnpkg.com/install.sh | bash; \
     else \
