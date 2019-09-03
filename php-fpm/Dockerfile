@@ -24,9 +24,13 @@ ARG LARADOCK_PHP_VERSION
 # Set Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
 
+
+#RUN cp /etc/apt/sources.list /etc/apt/source.list.bk
+#ADD ./sources.list /etc/apt
+
 # always run apt update when start and after add new source list, then clean up at end.
 RUN set -xe; \
-    apt-get update -yqq && \
+    apt-get update -y && \
     pecl channel-update pecl.php.net && \
     apt-get install -yqq \
       apt-utils \
