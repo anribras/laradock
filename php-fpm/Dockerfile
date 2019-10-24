@@ -29,9 +29,15 @@ RUN if [ ${CHANGE_SOURCE} = true ]; then \
     sed -i 's/deb.debian.org/mirrors.aliyun.com/' /etc/apt/sources.list \
 ;fi
 
+#RUN if [ "${http_proxy}" != "" ]; then \
+    ## Needed for pecl to succeed
+    #pear config-set http_proxy ${http_proxy} \
+#;fi
+
 # always run apt update when start and after add new source list, then clean up at end.
 RUN set -xe; \
     apt-get update -y && \
+
     pecl channel-update pecl.php.net && \
     apt-get install -yqq \
       apt-utils \
