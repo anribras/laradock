@@ -406,6 +406,7 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
         - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+        - ${MARIADB_CONF}:/etc/mysql/conf.d/my.conf
       ports:
         - "${MARIADB_PORT}:3306"
       environment:
@@ -416,6 +417,8 @@ services:
         - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       networks:
         - backend
+      command:
+        'mysqld --innodb-flush-method=littlesync --innodb-use-native-aio=OFF --log_bin=ON'
 
 ### PostgreSQL ###########################################
     postgres:
