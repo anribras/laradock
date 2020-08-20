@@ -184,9 +184,9 @@ services:
           - INSTALL_SSHPASS=${PHP_FPM_INSTALL_SSHPASS}
           - ADDITIONAL_LOCALES=${PHP_FPM_ADDITIONAL_LOCALES}
           - INSTALL_FFMPEG=${PHP_FPM_FFMPEG}
-          - http_proxy=${http_proxy}
-          - https_proxy=${https_proxy}
           - no_proxy
+          #- http_proxy=${http_proxy}
+          #- https_proxy=${https_proxy}
       volumes:
         - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
         - ./php-fpm/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
