@@ -3,20 +3,25 @@ FROM nginx:latest
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
 
 COPY nginx.conf /etc/nginx/
+COPY sources.list /etc/apt/sources.list
 
 # If you're in China, or you need to change sources, will be set CHANGE_SOURCE to true in .env.
 
 ARG CHANGE_SOURCE=false
-RUN if [ ${CHANGE_SOURCE} = true ]; then \
+#RUN if [ ${CHANGE_SOURCE} = true ]; then \
     # Change application source from dl-cdn.alpinelinux.org to aliyun source
-    sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
-;fi
+#    sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
+#;fi
 
 #RUN apk update \
 #    && apk upgrade \
 #    && apk --update add logrotate \
 #    && apk add --no-cache openssl \
 #    && apk add --no-cache bash
+
+# install procps
+RUN apt-get update &&  apt-get install -y procps
+
 
 #RUN set -x ; \
 #    addgroup -gid 82 www-data ; \

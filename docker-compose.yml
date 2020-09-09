@@ -406,7 +406,6 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
         - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
-        - ${MARIADB_CONF}:/etc/mysql/conf.d/my.conf
       ports:
         - "${MARIADB_PORT}:3306"
       environment:
