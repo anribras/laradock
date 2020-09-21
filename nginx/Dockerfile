@@ -20,7 +20,7 @@ ARG CHANGE_SOURCE=false
 #    && apk add --no-cache bash
 
 # install procps
-RUN apt-get update &&  apt-get install -y procps
+#RUN apt-get update &&  apt-get install -y procps
 
 
 #RUN set -x ; \
